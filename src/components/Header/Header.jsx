@@ -1,38 +1,78 @@
 import React from 'react';
+import { CiDeliveryTruck } from "react-icons/ci";
+import { LuScissorsSquareDashedBottom } from "react-icons/lu";
 
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-gray-400 flex justify-end items-center px-4 py-2 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div>
-        <img src="https://cdn-eu.dynamicyield.com/api/9879135/images/1a1dbedbbaaec__summer_logo_july.gif" alt="Your Company Logo"
-         className="h-10 mr-4" />
+        <div aria-label="Logo">
+            <img src="https://cdn-eu.dynamicyield.com/api/9879135/images/35fe435f20efa__shavot_new.gif" alt="Your Company Logo"
+             className="h-20" />
         </div>
 
         {/*Search bar */}
-        <div class="rounded-full bg-white shadow-md flex px-3 py-2 items-center">
-            <input type="text" placeholder="Search..." class="w-full focus:outline-none" />
-            <button class="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded-full">
-                <h7>חיפוש</h7>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" />
+        <div className="rounded-full  max-h-11 min-h-11 w-1/3 bg-white shadow-md flex px-3 py-2 border-3 shadow-xl items-center">
+            <input type="text" placeholder="חיפוש פריט או קטגוריה..." className="w-full h-7 bg-white text-black focus:outline-none" />
+            <button className=" h-9 bg-blue-500 flex items-center space-x-1 hover:bg-blue-700 text-white px-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5  w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" />
                 </svg>
+                <span className="font-family-rubik!">חיפוש</span>
             </button>
          </div>
-         <div className="flex items-center">
+         {/* <div className="flex items-center">
           <input type="text" placeholder="Search" className="rounded-full px-4 py-2 bg-white text-gray-800 focus:outline-none focus:ring focus:border-blue-300" />
           <button className="bg-blue-600 text-white rounded-full px-4 py-2 ml-2 hover:bg-blue-700">Search</button>
+        </div> */}
+
+
+        {/* Users */}
+        <div className="flex items-center" aria-label="User">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+            <span className="text-white  hover:text-blue-500 font-family-rubik">אורח</span>
         </div>
+        
+
+        
+
+        {/* Coupon section */}
+        <div className="flex items-center space-x-2" aria-label="Coupon">
+            <LuScissorsSquareDashedBottom />
+        </div>
+        
+        {/* delivery */}
+        <div aria-label="Delivery">
+            <CiDeliveryTruck />
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <button className="text-gray-600 hover:text-gray-900">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
+
 
 
         {/* Navigation */}
-        <nav className="hidden md:flex space-x-8">
+        {/* <nav className="hidden md:flex space-x-8">
           <a href="#" className="text-gray-600 hover:text-gray-900">Home</a>
           <a href="#" className="text-gray-600 hover:text-gray-900">Shop</a>
           <a href="#" className="text-gray-600 hover:text-gray-900">About</a>
           <a href="#" className="text-gray-600 hover:text-gray-900">Contact</a>
-        </nav>
+        </nav> */}
         
         {/* Icons */}
         {/* <div className="flex space-x-4">
@@ -47,45 +87,3 @@ const Header = () => {
             </svg>
           </button>
         </div> */}
-
-        {/* Users */}
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-white hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 14a7 7 0 0 0-7-7v8l4-4z" />
-            </svg>
-            <span class="text-white hover:text-blue-500">Guest</span>
-        </div>
-        /
-                  {/* Coupon section */}
-                  <div className="flex items-center space-x-2">
-            <svg className="w-6 h-6 fill-current text-white hover:text-blue-300" viewBox="0 0 20 20">
-              <path d="M17 2h-4a1 1 0 000 2h3v14H4V4h3a1 1 0 100-2H3a1 1 0 00-1 1v16a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1z"/>
-            </svg>
-            <span className="text-sm">Coupons</span>
-          </div>
-        {/* delivery */}
-        <div class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-white hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            </svg>
-            <span class="text-white hover:text-blue-500">Delivery</span>
-        </div>
-        <div className="flex items-center space-x-2">
-            <svg className="w-6 h-6 fill-current text-white hover:text-blue-300" viewBox="0 0 20 20">
-              <path d="M14 3h2v2h-2V3zm-4 0h2v2h-2V3zM5 7h10v9a1 1 0 01-1 1H6a1 1 0 01-1-1V7zm2 2H7v2h2V9zm4 0h-2v2h2V9zm-4 4H7v2h2v-2z"/>
-            </svg>
-            <span className="text-sm">Delivery</span>
-          </div>
-
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center">
-          <button className="text-gray-600 hover:text-gray-900">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-};
-
-export default Header;
