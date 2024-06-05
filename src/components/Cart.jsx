@@ -7,7 +7,7 @@ const Cart = () => {
   const cartItems = [
     { id: 1, name: 'תפוחים', quantity: 2, price: 11.99 },
     { id: 2, name: 'גבינה', quantity: 1, price: 12.99 },
-    { id: 3, name: 'לחם', quantity: 3, price: 8.99 },
+    { id: 3, name: 'לחם', quantity: 3, price: 8.69 },
   ];
 
   const deliveryPrice = 30;
