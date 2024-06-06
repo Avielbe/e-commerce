@@ -1,18 +1,30 @@
 
-import React from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaShoppingCart, FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 
 const Cart = () => {
   // Dummy data for demonstration purposes
-  const cartItems = [
+  const [cartItems, setCartItems] = useState([
     { id: 1, name: 'תפוחים', quantity: 2, price: 11.99 },
     { id: 2, name: 'גבינה', quantity: 1, price: 12.99 },
     { id: 3, name: 'לחם', quantity: 3, price: 8.69 },
-  ];
+  ]);
 
   const deliveryPrice = 30;
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0) + deliveryPrice;
   const savings = 10; // Dummy savings value
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const increaseQuantity = (id) => {
+    setCartItems(cartItems.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+  };
+
+  const decreaseQuantity = (id) => {
+    setCartItems(cartItems.map(item => item.id === id && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item));
+  };
 
   return (
     <div className="fixed left-0 top-28 h-screen w-1/5 bg-white shadow-xl shadow-gray-600 overflow-y-auto">
@@ -22,7 +34,11 @@ const Cart = () => {
           <div key={item.id} className="flex justify-between items-center mb-4 p-2 bg-gray-100 rounded-lg">
             <div className="text-right">
               <p className="font-semibold text-gray-700">{item.name}</p>
-              <p className="text-gray-500">כמות: {item.quantity}</p>
+              <div className="flex items-center space-x-2">
+                <button onClick={() => decreaseQuantity(item.id)}><FaMinus /></button>
+                <p className="text-gray-500">כמות: {item.quantity}</p>
+                <button onClick={() => increaseQuantity(item.id)}><FaPlus /></button>
+              </div>
             </div>
             <p className="font-bold text-green-600">₪{item.price.toFixed(2)}</p>
           </div>
@@ -41,6 +57,20 @@ const Cart = () => {
           <p className="text-right text-gray-500">בקנייה זו חסכת</p>
           <p className="font-bold text-green-600">₪{savings.toFixed(2)}-</p>
         </div>
+        
+        <div className="flex items-center mb-4">
+            <span
+                className="text-gray-500 hover:text-red-500 cursor-pointer mr-2"
+                onClick={clearCart}
+                aria-label="Clear Cart"
+            >
+                <FaTrashAlt />
+            </span>
+            <span className="text-gray-500 hover:text-red-500 cursor-pointer" onClick={clearCart}>
+                רוקן עגלה
+            </span>
+        </div>
+
         <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center">
           <FaShoppingCart className="mr-2" />
           <span>רכישה ({cartItems.length})</span>
