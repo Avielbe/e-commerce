@@ -1,0 +1,36 @@
+
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "תפוחים אורגניים",
+        "description": "תפוחים טריים ופריכים ממטעים מקומיים. עשירים בנוגדי חמצון וסיבים תזונתיים.",
+        "brand": "הטבע הטוב",
+        "pricePerHundredGrams": 1.99,
+        "price": 7.99,
+        "image": "https://shoppy.co.il/cdn/shop/products/pinkapple_720x.jpg",
+        "category": "פירות"
+      },
+      {
+        "id": 2,
+        "name": "עגבניות שרי",
+        "description": "עגבניות שרי מתוקות וטעימות. מקור טוב לליקופן.",
+        "brand": "",
+        "pricePerHundredGrams": 2.49,
+        "price": 12.99,
+        "image": "https://meshekd.co.il/wp-content/uploads/2021/06/red-tomato-white-1.jpg",
+        "category": "ירקות"
+      },
+      {
+        "id": 3,
+        "name": "גבינת פטה",
+        "description": "גבינת פטה קרמית מחלב כבשים. מתאימה לסלטים או כמאפה.",
+        "brand": "מחלבות הגליל",
+        "pricePerHundredGrams": 3.99,
+        "price": 19.99,
+        "image": "https://example.com/feta.jpg",
+        "category": "מוצרי חלב"
+      }
+    ],
+    "categories": ["פירות", "ירקות", "מוצרי חלב", "מאפים"]
+  }
