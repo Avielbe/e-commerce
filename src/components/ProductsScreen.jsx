@@ -5,10 +5,16 @@ import productsData from './products.json';
 
 const ProductsScreen = () => {
   const [products] = useState(productsData.products);
-  const [categories] = useState(productsData.categories);
+//   const [categories] = useState(productsData.categories);
+  const [categories] = useState(["כל המוצרים", ...productsData.categories]);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const filteredProducts = products.filter(product => product.category === activeCategory);
+
+
+//   const filteredProducts = products.filter(product => product.category === activeCategory);
+  const filteredProducts = activeCategory === "כל המוצרים"
+  ? products
+  : products.filter(product => product.category === activeCategory);
 
   return (
     <div className="container mx-auto my-8">
