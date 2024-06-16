@@ -1,10 +1,14 @@
-// src/components/CartContext.js
-import React, { createContext, useReducer, useCallback } from 'react';
+// src/components/CartContext.jsx
+import React, { createContext, useReducer } from 'react';
 
 const CartContext = createContext();
 
 const initialState = {
-  cartItems: [],
+  cartItems: [
+    { id: 1, name: 'תפוחים', quantity: 2, price: 11.99 },
+    { id: 2, name: 'גבינה', quantity: 1, price: 12.99 },
+    { id: 3, name: 'לחם', quantity: 3, price: 8.69 },
+  ],
 };
 
 const cartReducer = (state, action) => {
@@ -15,9 +19,7 @@ const cartReducer = (state, action) => {
         return {
           ...state,
           cartItems: state.cartItems.map(item =>
-            item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
+            item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
           ),
         };
       }
@@ -25,13 +27,24 @@ const cartReducer = (state, action) => {
         ...state,
         cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
       };
-    case 'REMOVE_FROM_CART':
+    case 'CLEAR_CART':
+      return { ...state, cartItems: [] };
+    case 'INCREASE_QUANTITY':
       return {
         ...state,
-        cartItems: state.cartItems.filter(item => item.id !== action.payload.id),
+        cartItems: state.cartItems.map(item =>
+          item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item
+        ),
       };
-    case 'CLEAR_CART':
-      return initialState;
+    case 'DECREASE_QUANTITY':
+      return {
+        ...state,
+        cartItems: state.cartItems
+          .map(item =>
+            item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item
+          )
+          .filter(item => item.quantity > 0),
+      };
     default:
       return state;
   }
@@ -40,23 +53,12 @@ const cartReducer = (state, action) => {
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const addToCart = useCallback(product => {
-    console.log('Adding to cart:', product);
+  const addToCart = product => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
-  }, []);
-
-  const removeFromCart = useCallback(productId => {
-    console.log('Removing from cart:', productId);
-    dispatch({ type: 'REMOVE_FROM_CART', payload: { id: productId } });
-  }, []);
-
-  const clearCart = useCallback(() => {
-    console.log('Clearing cart');
-    dispatch({ type: 'CLEAR_CART' });
-  }, []);
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems: state.cartItems, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cartItems: state.cartItems, addToCart }}>
       {children}
     </CartContext.Provider>
   );

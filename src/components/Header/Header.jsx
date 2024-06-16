@@ -3,7 +3,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { LuScissorsSquareDashedBottom } from "react-icons/lu";
 
 // Define constants
-const LOGO_URL = "https://cdn-eu.dynamicyield.com/api/9879135/images/35fe435f20efa__shavot_new.gif";
+const LOGO_URL = "https://cdn-eu.dynamicyield.com/api/9879135/images/7f9a395c8778__football_logo.gif";
 const SEARCH_PLACEHOLDER = "חיפוש פריט או קטגוריה...";
 
 // Extract repeated code into separate components
