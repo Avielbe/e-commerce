@@ -19,17 +19,21 @@ const cartReducer = (state, action) => {
         return {
           ...state,
           cartItems: state.cartItems.map(item =>
-            item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === action.payload.id 
+            ? { ...item, quantity: item.quantity + action.payload.quantity } 
+            : item
           ),
         };
       }
       return {
         ...state,
-        cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+        cartItems: [...state.cartItems, action.payload],
       };
     case 'CLEAR_CART':
       return { ...state, cartItems: [] };
+
     case 'INCREASE_QUANTITY':
+      const itemId = action.payload;
       return {
         ...state,
         cartItems: state.cartItems.map(item =>
