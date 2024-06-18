@@ -28,9 +28,109 @@
         "brand": "מחלבות הגליל",
         "pricePerHundredGrams": 3.99,
         "price": 19.99,
-        "image": "https://example.com/feta.jpg",
+        "image": "https://cdn.pixabay.com/photo/2015/02/10/02/42/cheese-630511_1280.jpg",
         "category": "מוצרי חלב"
-      }
+      },
+      {
+      "id": 4,
+      "name": "לחם כפרי מחיטה מלאה",
+      "description": "לחם טרי אפוי מחיטה מלאה, עשיר בסיבים תזונתיים ובריא.",
+      "brand": "לחם ארז",
+      "pricePerHundredGrams": 0.89,
+      "price": 7.99,
+      "image": "https://cdn.pixabay.com/photo/2019/05/06/14/24/bread-4183225_1280.jpg",
+      "category": "מאפים"
+    },
+    {
+      "id": 5,
+      "name": "ביצי חופש",
+      "description": "ביצים טריים ממשק חופשי, מקור עשיר לחלבון.",
+      "brand": "חוות הלול",
+      "pricePerHundredGrams": 3.99,
+      "price": 15.99,
+      "image": "https://cdn.pixabay.com/photo/2018/02/26/16/30/eggs-3183410_1280.jpg",
+      "category": "מוצרי חלב"
+    },
+    {
+      "id": 6,
+      "name": "בננות אורגניות",
+      "description": "בננות טריות ומתוקות מגידול אורגני, עשירות בסיבים ובוותאמין C.",
+      "brand": "פרי טוב",
+      "pricePerHundredGrams": 1.49,
+      "price": 6.99,
+      "image": "https://cdn.pixabay.com/photo/2017/06/27/22/21/banana-2449019_1280.jpg",
+      "category": "פירות"
+    },
+    {
+      "id": 7,
+      "name": "גזר מקומי",
+      "description": "גזר טרי וצהוב מגידול מקומי, מקור טוב לבטא-קרוטן.",
+      "brand": "פארמה ירק",
+      "pricePerHundredGrams": 1.19,
+      "price": 5.99,
+      "image": "https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_medium/UCL56_M_P_7296073153238_1.png",
+      "category": "ירקות"
+    },
+    {
+      "id": 8,
+      "name": "חמאה טבעונית",
+      "description": "חמאה טבעונית על בסיס אגוזים וצמחים, ללא מרכיבים מהחי.",
+      "brand": "טבעוני",
+      "pricePerHundredGrams": 4.99,
+      "price": 24.99,
+      "image": "https://example.com/veganspread.jpg",
+      "category": "מוצרי חלב"
+    },
+    {
+      "id": 9,
+      "name": "עגבניות צרובות",
+      "description": "עגבניות צרובות על האש, מלאות בטעם עשיר ומרקם מעודן.",
+      "brand": "גינת הירק",
+      "pricePerHundredGrams": 2.99,
+      "price": 14.99,
+      "image": "https://example.com/charredtomatoes.jpg",
+      "category": "ירקות"
+    },
+    {
+      "id": 10,
+      "name": "פסטה רבע לבנה",
+      "description": "פסטה איכותית מסוג רבע לבנה, מתאימה לכל סוגי הרטבים.",
+      "brand": "פסטה איטלקי",
+      "pricePerHundredGrams": 0.79,
+      "price": 6.99,
+      "image": "https://example.com/pasta.jpg",
+      "category": "מאפים"
+    },
+    {
+      "id": 11,
+      "name": "גבינת מוצרלה",
+      "description": "גבינת מוצרלה איכותית, מתאימה למאכלים איטלקיים.",
+      "brand": "מחלבות גלבוע",
+      "pricePerHundredGrams": 4.99,
+      "price": 24.99,
+      "image": "https://example.com/mozzarella.jpg",
+      "category": "מוצרי חלב"
+    },
+    {
+      "id": 12,
+      "name": "אבוקדו טרי",
+      "description": "אבוקדו בוגר וטרי, עשיר בשומן בריא ובוויטמינים.",
+      "brand": "פרי הדר",
+      "pricePerHundredGrams": 2.99,
+      "price": 13.99,
+      "image": "https://example.com/avocado.jpg",
+      "category": "פירות"
+    },
+    {
+      "id": 13,
+      "name": "חציל בייבי",
+      "description": "חצילים קטנים ורכים, מתאימים למגוון תבשילים.",
+      "brand": "גינת הירק",
+      "pricePerHundredGrams": 1.99,
+      "price": 9.99,
+      "image": "https://cdn.pixabay.com/photo/2016/09/10/17/47/eggplant-1659784_1280.jpg",
+      "category": "ירקות"
+    }
     ],
     "categories": ["פירות", "ירקות", "מוצרי חלב", "מאפים"]
   }

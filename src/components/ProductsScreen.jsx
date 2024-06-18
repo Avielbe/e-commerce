@@ -15,19 +15,19 @@ const ProductsScreen = () => {
     : products.filter(product => product.category === activeCategory);
 
   return (
-    <div className="container mx-auto my-8">
-      <div className="flex space-x-4 mb-6 rtl">
+    <div className="products-container my-8 pt-20 rtl  w-3/4 ml-auto">
+      <div className="flex space-x-4 mb-6">
         {categories.map(category => (
           <button
             key={category}
-            className={`px-4 py-2 rounded-md ${activeCategory === category ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`px-4 py-2 rounded-md ${activeCategory === category ? 'bg-blue-500 text-white' : 'bg-blue-200'}`}
             onClick={() => setActiveCategory(category)}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-3 space-x-40 gap-6 mb-20">
         {filteredProducts.map(product => (
           <ProductCard key={product.id} product={product} addToCart={addToCart} />
         ))}

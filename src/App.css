@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.products-container {
+
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  direction: rtl;
+  margin: 0 0 0 auto;  */
+}
