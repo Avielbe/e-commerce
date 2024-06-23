@@ -1,8 +1,8 @@
 // src/components/ProductsScreen.jsx
 import React, { useState, useContext } from 'react';
 import { CartContext } from './CartContext';
-import ProductCard from './ProductCard';
-import productsData from './products.json';
+import ProductCard from './Card';
+import productsData from '../products.json';
 
 const ProductsScreen = () => {
   const { addToCart } = useContext(CartContext);

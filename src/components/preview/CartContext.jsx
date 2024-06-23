@@ -1,6 +1,6 @@
 // src/components/CartContext.jsx
 import React, { createContext, useReducer } from 'react';
-import productsData from './products.json';
+import productsData from '../products.json';
 const CartContext = createContext();
 
 const initialState = {
@@ -56,7 +56,7 @@ const cartReducer = (state, action) => {
   }
 };
 
-const CartProvider = ({ children }) => {
+const ProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const addToCart = product => {
@@ -70,6 +70,6 @@ const CartProvider = ({ children }) => {
   );
 };
 
-export { CartContext, CartProvider };
+export { CartContext, ProductProvider };
 
 ////

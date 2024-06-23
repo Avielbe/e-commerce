@@ -1,16 +1,16 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Cart from './components/Cart';
-import ProductsScreen from './components/ProductsScreen';
-import { CartProvider } from './components/CartContext';
+import Cart from './components/preview/Cart';
+import CardScreen from './components/preview/CardScreen';
+import { ProductProvider } from './components/preview/CartContext';
 
 function App() {
   return (
-    <CartProvider>
+    <ProductProvider>
       <Header />
       <Cart />
-      <ProductsScreen />
-    </CartProvider>
+      <CardScreen />
+    </ProductProvider>
   );
 }
 
