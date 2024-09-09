@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, {useState} from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Cart from './components/preview/Cart';
@@ -26,20 +26,28 @@ function App() {
     setIsLogin (!isLogin)
    };
 
+  const handleLoginSuccess = () => {
+    setShowAuth(false); // Hide auth form after successful login
+  };
+
+  
   return (
-<AuthProvider>
+    <AuthProvider>
       <ProductProvider>
         <Router>
           <Header onUserIconClick={toggleAuth} />
           {showAuth ? (
             isLogin ? (
-              <Login onSwitchToRegister={switchAuthMode} />
-            ) :  (
+              <Login onSwitchToRegister={switchAuthMode} onLoginSuccess={handleLoginSuccess} />
+            ) : (
               <Register onSwitchToLogin={switchAuthMode} />
             )
           ) : (
             <>
-              <ProductsScreen />
+              <Routes>
+                <Route path="/" element={<ProductsScreen />} />
+                {/* Add more routes here as needed */}
+              </Routes>
               <Cart />
             </>
           )}

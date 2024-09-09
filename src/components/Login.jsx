@@ -1,15 +1,49 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onSwitchToRegister }) => {
+const Login = ({ onSwitchToRegister, onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(''); 
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log('Login attempted with:', { email, password, rememberMe });
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempted with:', { email, password, rememberMe });
+
+    try {
+      const response = await axios.post('http://localhost:5001/api/users/login', { email, password });
+      console.log("Login credentials:", { email, password });
+
+      console.log('Full response:', response.data);
+
+      const { token, firstName } = response.data;
+      console.log('Extracted firstName:', firstName);
+
+      localStorage.setItem('authToken', token);
+      setError('');
+
+      console.log('Login successful:', { token });
+
+      login({ firstName });
+      console.log('Navigating to homepage...');
+      onLoginSuccess();
+      navigate('/');
+
+    } catch (error) {
+      setError('Invalid email or password');
+      console.error('Login error:', error);
+    }
   };
 
   return (
@@ -26,7 +60,8 @@ const Login = ({ onSwitchToRegister }) => {
               required
               className="w-full px-4 py-2 text-right rounded-full bg-slate-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black font-bold peer z-10"
             />
-            <label className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-100 text-gray-500 transition-all duration-300 transform peer-focus:-translate-y-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-blue-500">
+            {/* <label className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-100 text-gray-500 transition-all duration-300 transform peer-focus:-translate-y-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-blue-500"> */}
+            <label className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-100 text-gray-500 transition-all duration-300 transform peer-focus:-translate-y-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-blue-500 peer-placeholder-shown:translate-y-1 peer-placeholder-shown:top-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-gray-500">
               אימייל
             </label>
           </div>
@@ -81,6 +116,7 @@ const Login = ({ onSwitchToRegister }) => {
               </label>
             </div>
           </div> */}
+          {error && <p className="text-red-500">{error}</p>}
           <button
             type="submit"
             className="w-full text-white py-2 px-4 rounded-full bg-red-500 hover:bg-red-600 transition duration-300"
@@ -90,13 +126,13 @@ const Login = ({ onSwitchToRegister }) => {
         </form>
 
         <p className="mt-4  align-middle">
-          <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-pink-500 rounded-full shadow-md group"
+          <a href="#_" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-pink-500 rounded-full shadow-md group"
            onClick={onSwitchToRegister}>
-            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-pink-500 group-hover:translate-x-0 ease">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-pink-500 group-hover:translate-x-0 ease">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </span>
-            <span class="absolute flex items-center justify-center w-full h-full text-pink-500 transition-all duration-300 transform group-hover:translate-x-full ease">להצטרפות</span>
-            <span class="relative invisible">הרשמה</span>
+            <span className="absolute flex items-center justify-center w-full h-full text-pink-500 transition-all duration-300 transform group-hover:translate-x-full ease">להצטרפות</span>
+            <span className="relative invisible">הרשמה</span>
           </a>
         </p>
 
